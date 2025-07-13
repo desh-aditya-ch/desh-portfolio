@@ -767,3 +767,121 @@ section p {
 .bg-white .text-gray-500 {
     color: var(--text-light) !important;
 }
+/* Enhanced Hero Profile Styling */
+.hero .avatar {
+    margin-top: 4rem !important;
+    margin-bottom: 4rem !important;
+}
+
+.hero .avatar > div {
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero .avatar img {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Better responsive spacing for profile */
+@media (max-width: 768px) {
+    .hero .avatar {
+        margin-top: 2rem !important;
+        margin-bottom: 3rem !important;
+    }
+    
+    .hero .avatar > div {
+        width: 200px !important;
+        height: 200px !important;
+        ring-offset-width: 6px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero .avatar {
+        margin-top: 1.5rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+    
+    .hero .avatar > div {
+        width: 180px !important;
+        height: 180px !important;
+        ring-offset-width: 4px !important;
+    }
+}
+
+/* Enhanced hero content spacing */
+.hero-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Better button spacing */
+.hero .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Enhanced social links */
+.hero .fab {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero .fab:hover {
+    transform: scale(1.25) translateY(-2px);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* Better profile image container */
+.profile-container {
+    position: relative;
+    display: inline-block;
+    padding: 2rem;
+}
+
+.profile-glow {
+    position: absolute;
+    inset: -20px;
+    background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #F59E0B);
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(20px);
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced status indicator */
+.hero .avatar .absolute {
+    width: 2rem !important;
+    height: 2rem !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+/* Better text spacing and visibility */
+.hero h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced scroll indicator */
+.hero .bottom-12 {
+    bottom: 3rem !important;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}

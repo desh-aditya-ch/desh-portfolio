@@ -58,16 +58,19 @@
     <!-- Hero Content -->
     <div class="hero-content text-center relative z-10 max-w-6xl mx-auto px-4 py-8">
         <div class="space-y-12">
-           <!-- Profile Image with Enhanced Spacing -->
-            <div class="avatar relative mt-16 mb-12">
-                <div class="w-48 h-48 lg:w-56 lg:h-56 rounded-full ring-4 ring-white/30 ring-offset-8 ring-offset-transparent shadow-2xl mx-auto">
-                    <img src="./assets/profile.jpg" alt="Desh Aditya Profile" class="rounded-full object-cover w-full h-full" />
-                </div>
-                <!-- Online Status Indicator -->
-                <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white animate-pulse shadow-lg">
-                    <div class="w-full h-full bg-green-400 rounded-full animate-ping"></div>
-                </div>
-            </div>
+           <!-- Profile Image with Glow Effect -->
+<div class="profile-container">
+    <div class="profile-glow"></div>
+    <div class="avatar relative">
+        <div class="w-56 h-56 lg:w-64 lg:h-64 rounded-full ring-4 ring-white/40 ring-offset-8 ring-offset-transparent shadow-2xl mx-auto relative z-10">
+            <img src="./assets/profile.jpg" alt="Desh Aditya Profile" class="rounded-full object-cover w-full h-full" />
+        </div>
+        <!-- Enhanced Status Indicator -->
+        <div class="absolute bottom-4 right-4 w-8 h-8 bg-green-400 rounded-full border-4 border-white animate-pulse shadow-lg z-20">
+            <div class="w-full h-full bg-green-400 rounded-full animate-ping"></div>
+        </div>
+    </div>
+</div>
             
             <!-- Hero Text with Better Spacing -->
             <div class="space-y-8">

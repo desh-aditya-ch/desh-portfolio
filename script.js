@@ -146,6 +146,152 @@ function animateCounters() {
         }
     });
 }
+// Enhanced smooth typing effect for hero section
+function smoothTypeWriter(element, text, speed = 50, callback = null) {
+    let i = 0;
+    element.textContent = '';
+    element.style.opacity = '1';
+    
+    // Add cursor effect
+    element.style.borderRight = '3px solid rgba(255, 255, 255, 0.8)';
+    element.style.animation = 'blink 1s infinite';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed + Math.random() * 20); // Add slight variation for natural feel
+        } else {
+            // Remove cursor after typing is complete
+            setTimeout(() => {
+                element.style.borderRight = 'none';
+                element.style.animation = 'none';
+                if (callback) callback();
+            }, 500);
+        }
+    }
+    type();
+}
+
+// Enhanced typing effect with better line handling
+function typeMultiLineText(element, lines, speed = 50) {
+    element.innerHTML = '';
+    element.style.opacity = '1';
+    
+    let currentLineIndex = 0;
+    
+    function typeLine() {
+        if (currentLineIndex < lines.length) {
+            const lineSpan = document.createElement('span');
+            lineSpan.style.opacity = '0';
+            element.appendChild(lineSpan);
+            
+            // Fade in the line container
+            setTimeout(() => {
+                lineSpan.style.transition = 'opacity 0.3s ease';
+                lineSpan.style.opacity = '1';
+            }, 100);
+            
+            // Type the current line
+            smoothTypeWriter(lineSpan, lines[currentLineIndex], speed, () => {
+                currentLineIndex++;
+                if (currentLineIndex < lines.length) {
+                    // Add line break and continue with next line
+                    element.appendChild(document.createElement('br'));
+                    setTimeout(typeLine, 300);
+                }
+            });
+        }
+    }
+    
+    typeLine();
+}
+
+// Initialize smooth typing effect on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Load resume content first
+    loadResumeContent();
+    
+    // Enhanced typing effect for hero title
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+        // Hide initially
+        heroTitle.style.opacity = '0';
+        
+        // Get the text content and split by <br>
+        const originalHTML = heroTitle.innerHTML;
+        const lines = originalHTML.split('<br>').map(line => 
+            line.replace(/<[^>]*>/g, '').trim() // Remove HTML tags for typing
+        );
+        
+        // Start typing after a short delay
+        setTimeout(() => {
+            typeMultiLineText(heroTitle, lines, 60);
+        }, 1000);
+    }
+    
+    // Smooth entrance animation for other elements
+    const heroSubtitle = document.querySelector('.hero p');
+    if (heroSubtitle) {
+        heroSubtitle.style.opacity = '0';
+        heroSubtitle.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            heroSubtitle.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            heroSubtitle.style.opacity = '1';
+            heroSubtitle.style.transform = 'translateY(0)';
+        }, 3000);
+    }
+    
+    // Animate profile image
+    const profileImage = document.querySelector('.hero .avatar');
+    if (profileImage) {
+        profileImage.style.opacity = '0';
+        profileImage.style.transform = 'scale(0.8) translateY(20px)';
+        
+        setTimeout(() => {
+            profileImage.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
+            profileImage.style.opacity = '1';
+            profileImage.style.transform = 'scale(1) translateY(0)';
+        }, 500);
+    }
+    
+    // Animate buttons
+    const buttons = document.querySelectorAll('.hero .btn');
+    buttons.forEach((btn, index) => {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            btn.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateY(0)';
+        }, 4000 + (index * 200));
+    });
+    
+    // Animate social links
+    const socialLinks = document.querySelectorAll('.hero .fab');
+    socialLinks.forEach((link, index) => {
+        link.parentElement.style.opacity = '0';
+        link.parentElement.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            link.parentElement.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            link.parentElement.style.opacity = '1';
+            link.parentElement.style.transform = 'translateY(0)';
+        }, 5000 + (index * 150));
+    });
+    
+    // Initialize skill progress bars
+    setTimeout(() => {
+        if (window.scrollY < 100) {
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        }
+    }, 2000);
+});
 
 // Enhanced resume content loading
 // Enhanced resume content loading with schooling information
